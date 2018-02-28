@@ -1,3 +1,15 @@
+<%
+if(getLocale()=="fr"){
+	langue = "en"
+}
+else{
+	
+	langue = "fr"
+}
+
+%>
+
+
 <div class="global couleur-menu">
 	<div> <!-- début barre de menu -->
 		<input id='burger' type='checkbox'>
@@ -10,6 +22,7 @@
 				 <a href='/'><i class="fa fa fa-users" aria-hidden="true"></i><%=__('accueil') %></a>
 				 <a href='/vider'><i class="fa fa-industry" aria-hidden="true"></i><%=__('vider') %></a>
 				 <a href='/adresse'><i class="fa fa-graduation-cap" aria-hidden="true"></i><%=__('adresse') %></a>
+				 <a href='/<%= langue %>'><i class="fa fa-bars" aria-hidden="true"></i><%= langue %></a>
 			</nav> 
 			<form class='recherche'  action='/adresse' name="recherche" id="recherche">
 			    <input type="text" name="recherche" 
