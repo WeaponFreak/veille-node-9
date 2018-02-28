@@ -3,7 +3,9 @@
 	"accueil": "Accueil",
 	"vider": "Vider",
 	"adresse": "Adresse",
-	"nom:": "Nom",
+	"nom": "Nom",
 	"prenom": "Prenom",
-	"telephone": "téléphone"
+	"telephone": "téléphone",
+	"ajouter": "Ajouter",
+	"modifier": "Modifier"
 }

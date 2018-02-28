@@ -1,9 +1,11 @@
 {
-	"courriel": "email",
+	"courriel": "Email",
 	"accueil": "Home",
-	"vider": "Clear",
+	"vider": "Clear",	
 	"adresse": "Adresse",
-	"nom:": "Last Name",
+	"nom": "Last Name",
 	"prenom": "First Name",
-	"telephone": "Phone"
+	"telephone": "Phone",
+	"ajouter": "Add",
+	"modifier": "Update"
 }
