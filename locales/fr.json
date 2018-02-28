@@ -1,4 +1,9 @@
 {
 	"courriel": "courriel",
-	"accueil": "accueil"
+	"accueil": "Accueil",
+	"vider": "Vider",
+	"adresse": "Adresse",
+	"nom:": "Nom",
+	"prenom": "Prenom",
+	"telephone": "téléphone"
 }
