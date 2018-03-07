@@ -1,3 +1,4 @@
+"use stric"
 const express = require('express');
 const fs = require('fs');
 const util = require("util");
@@ -5,12 +6,15 @@ const app = express();
 const bodyParser= require('body-parser');
 const MongoClient = require('mongodb').MongoClient; // le pilote MongoDB
 const ObjectID = require('mongodb').ObjectID;
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}));
+
 /* on associe le moteur de vue au module «ejs» */
 app.use(express.static('public'));
 const i18n = require('i18n');
-const cookieParser = require ('cookie-parser');
+const cookieParser = require('cookie-parser');
 app.use(cookieParser())
+
 /* Ajoute l'objet i18n à l'objet global «res» */
 i18n.configure({
 	locales : ['fr', 'en'],
@@ -37,26 +41,24 @@ console.log('connexion à la BD')
 /*
 Les routes
 */
-
-////////////////////////////////////////// Route /
 app.set('view engine', 'ejs'); // générateur de template
 
-
-//////////////////
-
+////////////////////////////////////////// Route /
 app.get('/:local(en|fr)', function (req, res) {
-	console.log("req.params.local = " + req.params.local)
-	res.cookie('langueChoisie', req.params.local)
-	res.setLocale(req.params.local)
-	console.log(res.__('courriel'))
-	res.redirect(req.get('referer'))
+	console.log("req.params.local = " + req.params.local);
+	res.cookie('langueChoisie', req.params.local);
+	res.setLocale(req.params.local);
+	console.log(res.__('courriel'));
+	res.redirect(req.get('referer'));
 });
-///////
+
+//////////////////////////////////////////
 app.get('/', function (req, res) {
-	console.log("req.cookies.langueChoisie = "+ req.cookies.langueChoisie)
-	console.log(res.__('courriel'))
-	res.render('accueil.ejs')
+	console.log("req.cookies.langueChoisie = " + req.cookies.langueChoisie);
+	console.log(res.__('courriel'));
+	res.render('accueil.ejs'); 
 });
+
 
 //////////////////////////////////////////  Route Adresse
 app.get('/adresse', function (req, res) {
@@ -133,3 +135,4 @@ app.get('/vider', (req, res) => {
 		})
 	res.redirect('/adresse')
 })
+
