@@ -16,3 +16,33 @@
     <button type="submit"><%=__('modifier') %></button>
 </form>
 
+<script type="text/javascript">
+	let elmAjouter = document.getElementById('ajouter')
+
+            elmAjouter.addEventListener('click', function(){       
+       
+            let nom = document.getElementById('nom_ajouter').value
+            let prenom = document.getElementById('prenom_ajouter').value
+            let telephone = document.getElementById('telephone_ajouter').value
+            let courriel = document.getElementById('courriel_ajouter').value
+            
+            xhr.open('POST', "/ajouter_ajax", true);
+                
+            data = {
+     
+                "nom" : nom,
+                "prenom" : prenom,
+                "telephone" : telephone,
+                "courriel" : courriel
+            }
+                
+            sData = JSON.stringify(data);
+            console.log("sData = " + sData)
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.send(sData);
+            xhr.addEventListener("readystatechange", traiterRequest, false);
+
+           
+                
+            })
+</script>
