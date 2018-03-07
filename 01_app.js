@@ -136,3 +136,37 @@ app.get('/vider', (req, res) => {
 	res.redirect('/adresse')
 })
 
+app.post('/modifier_ajax', (req, res) => {
+	console.log('route /ajax_modifier');
+	 console.log('req.body = ' + util.inspect(req.body));
+	req.body._id = 	ObjectID(req.body._id);
+	console.log('req.body._id = ' + req.body._id);
+	db.collection('adresse').save(req.body, (err, result) => {
+		if (err) return console.log(err);
+		console.log('sauvegarder dans la BD');
+		console.log('req.body = ' + util.inspect(req.body));
+		res.send(JSON.stringify(req.body));
+	})
+})
+///////////
+app.post('/detruire_ajax', (req, res) => {
+ console.log('route /detruire')
+ console.log('utilreq.body = ' + util.inspect(req.body));	
+ // console.log('util = ' + util.inspect(req.body));
+ db.collection('adresse').findOneAndDelete({"_id": ObjectID(req.body._id)}, (err, resultat) => {
+
+	if (err) return console.log(err)
+	 res.send(JSON.stringify(resultat))  // redirige vers la route qui affiche la collection
+ })
+
+})
+/////
+app.post('/ajouter_ajax', (req,res) => {
+console.log('route /ajax_ajouter')	
+ db.collection('adresse').save(req.body, (err, result) => {
+ if (err) return console.log(err)
+ console.log('req.body._id =' + req.body._id)	
+ console.log('sauvegarder dans la BD')
+    res.send(JSON.stringify(req.body))
+ })
+})
